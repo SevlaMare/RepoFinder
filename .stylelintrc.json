@@ -1,0 +1,35 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-prettier"],
+  "ignoreFiles": [
+    "node_modules",
+    "build/**",
+    "dist/**",
+    "public",
+    "out",
+    ".next",
+    "docs",
+    "**/bootstrap*.css",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "rules": {
+    "prettier/prettier": true,
+    "rule-empty-line-before": null,
+    "media-feature-range-notation": null,
+    "alpha-value-notation": null,
+    "color-function-notation": null,
+    "declaration-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment", "after-declaration"]
+      }
+    ],
+    "color-hex-length": null,
+    "declaration-block-no-duplicate-properties": null
+  },
+  "at-rule-no-unknown": false
+}
