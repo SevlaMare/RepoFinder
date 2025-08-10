@@ -1,7 +1,8 @@
-import { line, curveLinear, csv, scaleBand, scaleLinear, max } from 'd3';
+import { line, curveLinear } from 'd3';
+import { MarksProps } from './types';
 import styles from './chart.module.css';
 
-export const Marks = ({ data, xScale, yScale, xValue, yValue }) => {
+export const Marks = ({ data, xScale, yScale, xValue, yValue }: MarksProps) => {
   return (
     <g className={styles.marks} key={Math.random()}>
       {/* line connecting the dots */}
@@ -16,7 +17,7 @@ export const Marks = ({ data, xScale, yScale, xValue, yValue }) => {
       {/* dots */}
       {data.map(item => (
         <rect
-          key={item.id}
+          key={Math.random()}
           x={xScale(xValue(item))}
           y={yScale(yValue(item))}
           transform='translate(-6,-6)'

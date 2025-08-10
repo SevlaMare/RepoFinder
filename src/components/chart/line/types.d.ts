@@ -17,3 +17,18 @@ export interface AxisBottomProps {
   height: number; // Height of the axis
   offset?: number; // Optional space before start plot dots
 }
+
+export interface AxisLeftProps {
+  yScale: (value: number) => number;
+  width: number;
+  height: number;
+  offset?: number;
+}
+
+export interface MarksProps {
+  data: DataPoint[];
+  xScale: ScaleBand<string> | ScaleLinear<number, number>;
+  yScale: ScaleLinear<number, number>;
+  xValue: (d: DataPoint) => string | number;
+  yValue: (d: DataPoint) => number;
+}
