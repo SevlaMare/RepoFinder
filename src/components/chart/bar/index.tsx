@@ -19,24 +19,23 @@ export function BarChart({
   width = 300,
   height = 300,
 }: BarChartProps) {
-  const data = dataset;
   const chartRef = useRef<ChartRefType>(null);
 
-  const innerHeight = height - margin.top - margin.bottom; // inner height
-  const innerWidth = width - margin.left - margin.right; // inner width
+  const innerHeight = height - margin.top - margin.bottom;
+  const innerWidth = width - margin.left - margin.right;
 
   // -------- pick values from dataset attributes --------
-  const xValue = (item: DataPoint) => item.category; // Assuming category is a string
+  const xValue = (item: DataPoint) => item.category;
   const yValue = (item: DataPoint) => +item.value;
 
   // -------- axis scales / gen equidistant spacing based on dataset range
   const xScale = scaleBand()
-    .domain(data.map(xValue))
+    .domain(dataset.map(xValue))
     .range([0, innerWidth])
-    .padding(0.1); // Add padding between bars
+    .padding(0.1); // between bars
 
   const yScale = scaleLinear()
-    .domain([0, Math.max(...data.map(yValue))]) // Set domain from 0 to max value
+    .domain([0, Math.max(...dataset.map(yValue))])
     .range([innerHeight, 0]);
 
   return (
@@ -46,7 +45,7 @@ export function BarChart({
           <AxisBottom
             xScale={xScale}
             height={innerHeight}
-            tickFormat={value => value} // Format for x-axis labels
+            tickFormat={value => value}
           />
 
           <AxisLeft
@@ -55,9 +54,8 @@ export function BarChart({
             width={innerWidth}
           />
 
-          {/* Render Bars */}
           <Bars
-            data={data}
+            data={dataset}
             xScale={xScale}
             yScale={yScale}
             xValue={xValue}

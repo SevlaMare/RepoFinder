@@ -1,6 +1,12 @@
 import { AxisBottomProps } from './types';
 import styles from './chart.module.css';
 
+const labelStyle: React.CSSProperties = {
+  textAnchor: 'middle',
+  fontSize: '9px',
+  fill: '#374151',
+};
+
 export const AxisBottom = ({
   xScale, // position ticks
   tickFormat, // fx to format x axis labels
@@ -14,10 +20,14 @@ export const AxisBottom = ({
       transform={`translate(${xScale(tickValue)},0)`}
     >
       {/* vertical grid lines, one for each dot */}
-      <line y2={height} />
+      <line y2={height + 5} />
 
       {/* x axis labels */}
-      <text y={height + offset} transform={`rotate(0, 0, ${height + offset})`}>
+      <text
+        y={height + offset}
+        transform={`rotate(0, 0, ${height + offset})`}
+        style={labelStyle}
+      >
         {tickFormat(tickValue).toUpperCase()}
       </text>
     </g>

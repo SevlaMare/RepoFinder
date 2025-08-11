@@ -3,11 +3,11 @@ import { Contributor, Repository } from './types';
 import { get6moTimestampRange } from '@/utils/date';
 import { BarChart } from '@/components/chart/bar';
 import { LineChart } from '@/components/chart/line';
-import {
-  contributorsData_mock,
-  repoData_mock,
-  mock_commitHistory,
-} from './mock/data';
+// import {
+//   contributorsData_mock,
+//   repoData_mock,
+//   mock_commitHistory,
+// } from './mock/data';
 
 const parseContributorsData = contributorsData => {
   const sortedContributors = contributorsData.sort(
@@ -67,6 +67,7 @@ function parseMonthlyCommits(commits_history_count) {
   });
 
   result.sort((a, b) => a.timestamp - b.timestamp);
+  console.log(result);
   return result;
 }
 
@@ -282,7 +283,7 @@ export function RepoDetails() {
 
         <div className='bg-white rounded-xl shadow-sm p-6 lg:col-span-2'>
           <h2 className='text-lg font-semibold text-gray-800'>
-            Commits over the last 6 months
+            Last 30 commits
           </h2>
           {commithistory && (
             <LineChart dataset={commithistory} width={580} height={400} />

@@ -6,7 +6,7 @@ import { AxisBottom } from './AxisBottom';
 import { AxisLeft } from './AxisLeft';
 import { Marks } from './Marks';
 
-const xAxisTickFormat = timeFormat('%b/%Y');
+const xAxisTickFormat = timeFormat('%d %b');
 const margin = {
   top: 20,
   right: 30,
@@ -22,8 +22,8 @@ export function LineChart({
   const data = dataset;
   const chartRef = useRef<ChartRefType>(null);
 
-  const innerHeight = height - margin.top - margin.bottom; // inner height
-  const innerWidth = width - margin.left - margin.right; // inner width
+  const innerHeight = height - margin.top - margin.bottom;
+  const innerWidth = width - margin.left - margin.right;
 
   // -------- pick values from dataset attributes --------
   const xValue = (item: DataPoint) => +item.timestamp;

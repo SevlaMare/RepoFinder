@@ -1,10 +1,20 @@
 import { LinkProps } from './types';
 
-export function Link({ href, children, onClick }: LinkProps) {
+const baseStyle = `hover:underline`;
+export const linkVariants = {
+  primary: `text-blue-600`,
+};
+
+export function Link({
+  href,
+  children,
+  onClick,
+  variant = 'primary',
+}: LinkProps) {
   return (
     <a
       href={href}
-      className='text-blue-600 hover:underline'
+      className={`${baseStyle} ${linkVariants[variant]}`}
       onClick={onClick}
       target='_blank'
       rel='noopener noreferrer'
